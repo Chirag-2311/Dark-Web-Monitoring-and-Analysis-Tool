@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<!-- Meta -->
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+		<meta name="description" content="Pathaan - One Page Parallax Template">
+		<meta name="keywords" content="agency, business, corporate, creative, html5, modern, multipurpose, One Page, parallax, startup">		
+		<!-- SITE TITLE -->
+		<title>Default Crawler</title>			
+		<!-- Latest Bootstrap min CSS -->
+		<link rel="stylesheet" href="{{ url_for('static', filename='assets/bootstrap/css/bootstrap.min.css') }}">		
+		<!-- Google Font -->
+		<link href="https://fonts.googleapis.com/css2?family=Exo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"> 
+		<!-- Font Awesome CSS -->
+		<!-- FILEPATH: /workspaces/cyber-temp/templates/index.html -->
+		<!-- BEGIN: ed8c6549bwf9 -->
+		<link rel="stylesheet" href="{{ url_for('static', filename='assets/fonts/fontawesome.min.css') }}">
+		<!-- END: ed8c6549bwf9 -->
+		<!-- FILEPATH: /workspaces/cyber-temp/templates/index.html -->
+		<!-- BEGIN: ed8c6549bwf9 -->
+		<link rel="stylesheet" href="{{ url_for('static', filename='assets/fonts/themify-icons.css') }}">
+		<!--- owl carousel Css-->
+		<link rel="stylesheet" href="{{ url_for('static', filename='assets/owlcarousel/css/owl.carousel.css') }}">
+		<link rel="stylesheet" href="{{ url_for('static', filename='assets/owlcarousel/css/owl.theme.css') }}">
+		<!--jquery-simple-mobilemenu Css-->
+		<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/jquery-simple-mobilemenu.css') }}">
+		<!-- MAGNIFIC CSS -->
+		<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/magnific-popup.css') }}">
+		<!-- animate CSS -->
+		<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/animate.css') }}">
+		<!-- Style CSS -->
+		<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/style.css') }}">
+		<!-- END: ed8c6549bwf9 -->
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	</head>
+	
+    <body data-spy="scroll" data-offset="80">
+		<main>
+			<div id="star-container"></div>
+		</main>
+		<style>
+			body, html {
+				margin: 0;
+				padding: 0;
+				height: 100%;
+				overflow: hidden;
+			}
+		
+			#star-container {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100vw;
+				height: 100vh;
+				z-index: 0; /* Set to lowest to ensure it's behind other content */
+				background-color: black; /* Black background for star scene */
+				
+			}
+		
+			.container, #navigation {
+				position: relative; /* Necessary for z-index to work */
+				z-index: 1; /* Higher than the star container */
+			}
+		
+			#navigation {
+				width: 100%;
+				background: black;
+				z-index:10;
+			}
+		
+			.container {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				height: 100vh;
+				margin: 0 auto;
+				margin-top:-100px;
+			}
+		
+			h1 {
+				margin: 1.5rem 0px;
+				font-size: 4rem;
+				color: #18fef5;
+				text-align: center;
+			}
+		
+			form {
+				display: flex;
+				flex-direction: column;
+				width: 100%;
+				max-width: 500px;
+			}
+		
+			label, input[type="text"], button {
+				text-align: center;
+			}
+		
+			input[type="text"], button {
+				padding: 10px;
+				margin-bottom: 15px;
+				border-radius: 5px;
+			}
+		
+			input[type="text"] {
+				border: 1px solid #555555;
+				background-color: #333333;
+				color: #ffffff;
+			}
+		
+			button {
+				background-color: #18fef5;
+				border: none;
+				color: #000000;
+				font-weight: 600;
+				cursor: pointer;
+				transition: background-color 0.3s ease;
+			}
+		
+			button:hover {
+				background-color: transparent;
+				border: 1px solid #18fef5;
+				color: #ffffff;
+			}
+			
+		</style>
+		
+		<!-- START PRELOADER -->
+		<div class="preloaders">
+			<span class="loader"></span>
+		</div>
+		<!-- END PRELOADER -->		
+		
+		<!-- START NAVBAR -->  
+		<div id="navigation" class="navbar-light bg-faded site-navigation">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-20 align-self-center">
+						<div class="site-logo">
+							<a href="{{ url_for('home' )}}"><img src="assets/img/logo-top.png" alt=""></a>          				
+						</div>
+					</div><!--- END Col -->
+					
+					<div class="col-60 d-flex justify-content-center">
+						<nav id="main-menu">
+							<ul class="">		  				  
+								<li><a href="{{ url_for('home') }}" class="menu-item" id="default-button"><strong>HOME</strong></a></li>
+								<li><a href="{{ url_for('default_crawler') }}" class="menu-item" id="default-button">DEFAULT</a></li>
+								<li><a href="{{ url_for('keyword_search') }}" class="menu-item" id="keyword-button">KEYWORD SEARCH</a></li>
+                                <li><a href="{{ url_for('crypto_search') }}" class="menu-item" id="crypto-button">CRYPTO</a></li>						  
+							</ul>
+						</nav>
+					</div><!--- END Col -->
+					
+					<ul class="mobile_menu">												
+						<li><a href="{{ url_for('default_crawler') }}" class="menu-item" id="default-button">DEFAULT</a></li>
+						<li><a href="{{ url_for('keyword_search') }}" class="menu-item" id="keyword-button">KEYWORD SEARCH</a></li>
+                        <li><a href="{{ url_for('crypto_search') }}" class="menu-item" id="crypto-button">CRYPTO</a></li>						  				  
+					</ul>			
+				</div><!--- END ROW -->
+			</div><!--- END CONTAINER -->
+		</div> 	  
+		<!-- END NAVBAR -->		
+
+		<!-- START PAGE -->
+		<div class="container">
+            <h1>Dark Web Crawler</h1>
+            <form method="post">
+                <label for="url">Enter the URL for default crawl:</label>
+                <input type="text" id="url" name="url" required placeholder="http://example.com">
+                <button type="submit">Crawl</button>
+            </form>
+        </div>
+
+	
+	<!-- Latest jQuery -->
+					<script type="module" src="{{ url_for('static', filename='stars.js') }}"></script>
+
+					<script src="{{ url_for('static', filename='assets/js/jquery-1.12.4.min.js') }}"></script>
+				<!-- Latest compiled and minified Bootstrap -->
+					<script src="{{ url_for('static', filename='assets/bootstrap/js/bootstrap.min.js') }}"></script>
+				<!-- modernizer JS -->		
+					<script src="{{ url_for('static', filename='assets/js/modernizr-2.8.3.min.js') }}"></script>	
+				<!-- jquery-simple-mobilemenu.min -->
+					<script src="{{ url_for('static', filename='assets/js/jquery-simple-mobilemenu.js') }}"></script>		
+				<!-- owl-carousel min js  -->
+					<script src="{{ url_for('static', filename='assets/owlcarousel/js/owl.carousel.min.js') }}"></script>					
+				<!-- magnific-popup js -->               
+					<script src="{{ url_for('static', filename='assets/js/jquery.magnific-popup.min.js') }}"></script>						
+				<!-- countTo js -->
+					<script src="{{ url_for('static', filename='assets/js/jquery.inview.min.js') }}"></script>					
+				<!-- stellar js -->
+					<script src="{{ url_for('static', filename='assets/js/jquery.stellar.min.js') }}"></script>				
+				<!-- scrolltopcontrol js -->
+					<script src="{{ url_for('static', filename='assets/js/scrolltopcontrol.js') }}"></script>	
+				<!-- jquery.bubble js -->	
+					<script src="{{ url_for('static', filename='assets/js/superMarquee.min.js') }}"></script>			
+				<!-- WOW - Reveal Animations When You Scroll -->
+					<script src="{{ url_for('static', filename='assets/js/wow.min.js') }}"></script>				
+				<!-- scripts js -->
+					<script src="{{ url_for('static', filename='assets/js/scripts.js') }}"></script>
+
+    </body>
+</html>

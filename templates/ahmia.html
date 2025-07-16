@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Pathaan - One Page Parallax Template">
+    <meta name="keywords" content="agency, business, corporate, creative, html5, modern, multipurpose, One Page, parallax, startup">
+    <!-- SITE TITLE -->
+    <title>Default Crawler</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/bootstrap/css/bootstrap.min.css') }}">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Exo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/fonts/fontawesome.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/fonts/themify-icons.css') }}">
+    <!-- Owl carousel Css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/owlcarousel/css/owl.carousel.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/owlcarousel/css/owl.theme.css') }}">
+    <!-- Additional CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/jquery-simple-mobilemenu.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/magnific-popup.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/animate.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/style.css') }}">
+    <!-- HTML5 shim and Respond.js for IE8 support -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    #star-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: -1; /* Behind all content */
+        background-color: black; /* Black background for star scene */
+    }
+
+    #navigation {
+        position: fixed;
+        width: 100%;
+        z-index: 1000; /* Ensures menu is above the stars */
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 300px; /* Push down below navbar */
+        z-index: 100; /* Above stars, below fixed navbar */
+    }
+
+</style>
+<div id="star-container"></div>
+<!-- START PRELOADER -->
+<div class="preloaders">
+    <span class="loader"></span>
+</div>
+<!-- END PRELOADER -->
+<!-- START NAVBAR -->
+<div id="navigation" class="navbar-light bg-faded site-navigation">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-20 align-self-center">
+            </div>
+            <div class="col-60 d-flex justify-content-center">
+                <nav id="main-menu">
+                    <ul>
+                        <li><a href="{{ url_for('home') }}" class="menu-item" id="default-button"><strong>HOME</strong></a></li>
+                        <li><a href="{{ url_for('default_crawler') }}" class="menu-item" id="default-button">DEFAULT</a></li>
+                        <li><a href="{{ url_for('keyword_search') }}" class="menu-item" id="keyword-button">KEYWORD SEARCH</a></li>
+                        <li><a href="{{ url_for('crypto_search') }}" class="menu-item" id="crypto-button">CRYPTO</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END NAVBAR -->
+<!-- START PAGE -->
+<div class="container">
+    <h1>Keyword Search</h1>
+    <form action="/" method="post">
+        <input type="text" name="keyword" placeholder="Enter search keyword" required>
+        <button type="submit">Search</button>
+    </form>
+    <!-- Table or other content here -->
+</div>
+<!-- Latest jQuery -->
+<script src="{{ url_for('static', filename='assets/js/jquery-1.12.4.min.js') }}"></script>
+<!-- Latest compiled and minified Bootstrap -->
+<script src="{{ url_for('static', filename='assets/bootstrap/js/bootstrap.min.js') }}"></script>
+<!-- Additional Scripts -->
+<script type="module" src="{{ url_for('static', filename='stars.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/js/modernizr-2.8.3.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/js/jquery-simple-mobilemenu.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/owlcarousel/js/owl.carousel.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/js/jquery.magnific-popup.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/js/jquery.inview.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/js/jquery.stellar.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/js/scrolltopcontrol.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/js/superMarquee.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/js/wow.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/js/scripts.js') }}"></script>
+</body>
+</html>
+

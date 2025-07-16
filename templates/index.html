@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Web Crawler</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <main>
+        <div id="three-container"></div>
+    </main>
+    <div class="container">
+        <header class="header">
+            <div class="header-background">
+                <!-- Removed the CYBERSQUAD text from here -->
+            </div>
+        </header>
+        <main class="main-content">
+            <div class="heading-wrapper">
+                <h1>SHADOW SEEKER</h1>
+                <div class="tagline">Safeguarding Your Digital Identity.</div>
+            </div>
+            <!-- Added CYBERSQUAD text below the tagline -->
+            <div class="cybersquad-container">
+                <span class="cybersquad-text">- CYBERSQUAD</span>
+            </div>
+            <nav class="menu">
+                <a href="{{ url_for('default_crawler') }}" class="menu-item" id="default-button">DEFAULT</a>
+                <a href="{{ url_for('keyword_search') }}" class="menu-item" id="keyword-button">KEYWORD SEARCH</a>
+                <a href="{{ url_for('crypto_search') }}" class="menu-item" id="crypto-button">CRYPTO</a>
+            </nav>
+        </main>
+        <footer class="footer">
+            <p class="footer-text">We’re dedicated to safeguarding your digital assets.</p>
+            <button class="about-btn">ABOUT US</button>
+        </footer>
+    </div>
+    <script src="{{ url_for('static', filename='static.js') }}"></script>
+    <script type="module" src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Three Column Layout with Toggle</title>
+    <style>
+        body {
+            font-family: 'Space Mono', monospace;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+         #navigation .container-fluid {
+    display: flex;
+    justify-content: center; /* Aligns content horizontally in the center */
+    align-items: center; /* Aligns content vertically in the center */
+    margin:20px;
+ 
+}
+
+#navigation nav {
+    text-align: center; /* Ensures text within navigation is centered */
+    
+}
+
+#navigation ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none; /* Removes list styling */
+    display: inline-block; /* Aligns the list items in a row */
+    
+}
+
+#navigation li {
+    display: inline; /* Displays list items inline */
+    padding: 10px; /* Adds space around each item */
+}
+#navigation li a{
+	color:white;
+}
+
+    	
+#navigation a {
+    text-decoration: none; /* Removes underline from all links in the navigation */
+    color: white; /* Optional: sets the text color to white */
+}
+
+#navigation a:hover {
+    text-decoration: underline; /* Adds underline on hover for better user interaction visibility */
+    color: #ccc; /* Optional: changes color on hover */
+}
+        .container {
+            display: flex;
+            flex-direction: row;
+            width: 80%;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        #navigation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: black;
+        }
+
+        .column {
+            flex: 1;
+            padding: 20px;
+            border-right: 1px solid #ddd;
+            overflow-wrap: break-word;
+        }
+
+        .column:last-child {
+            border-right: none;
+        }
+
+        .header {
+            text-align: center;
+            padding: 10px;
+            background-color: black;
+            color: #fff;
+            font-size: 24px;
+        }
+
+        .row {
+            margin-bottom: 20px;
+        }
+
+        .row:last-child {
+            margin-bottom: 0;
+        }
+
+        .row .label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .row .value {
+            font-size: 14px;
+            color: #333;
+        }
+
+        .toggle-container {
+            margin-bottom: 10px;
+        }
+
+        .toggle-container label {
+            font-size: 16px;
+            margin-right: 10px;
+        }
+
+        .toggle-container input[type="checkbox"] {
+            transform: scale(1.2);
+        }
+
+        /* Hide the column with display none */
+        .hidden {
+            display: none;
+        }
+
+        .result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<main>
+    <div id="star-container"></div>
+</main>
+<div id="navigation" class="navbar-light bg-faded site-navigation">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-20 align-self-center">
+                
+            </div>
+            <div class="col-60 d-flex justify-content-center">
+                <nav id="main-menu">
+                    <ul>
+                        <li><a href="{{ url_for('home') }}" class="menu-item" id="default-button"><strong>HOME</strong></a></li>
+                        <li><a href="{{ url_for('default_crawler') }}" class="menu-item" id="default-button">DEFAULT</a></li>
+                        <li><a href="{{ url_for('keyword_search') }}" class="menu-item" id="keyword-button">KEYWORD SEARCH</a></li>
+                        <li><a href="{{ url_for('crypto_search') }}" class="menu-item" id="crypto-button">CRYPTO</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<body>
+    <form method="POST" action="/crypto">
+        <input type="text" id="keyword" name="keyword" placeholder="Enter search keyword" required>
+        <button type="submit">Search</button>
+    </form>
+
+    <div class="toggle-container">
+        <label for="toggleCrypto">Show Crypto Address</label>
+        <input type="checkbox" id="toggleCrypto" checked>
+    </div>
+
+    <div class="container">
+        <div class="column">
+            <div class="header">Author</div>
+            <div id="authors" class="result">
+                {% if results %}
+    {% for result in results %}
+        {% if result.comment is mapping %}
+            {% for username_date, comment_body in result.comment.items() %}
+                <div class="row">
+                    <div class="label">{{ username_date }}:</div>
+                    <div class="value">{{ comment_body }}</div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="row">
+                <div class="value">{{ result.comment }}</div>
+            </div>
+        {% endif %}
+    {% endfor %}
+{% else %}
+    <div class="row">
+        <div class="value">No results found.</div>
+    </div>
+{% endif %}
+
+            
+        </div>
+        <div class="column">
+            <div class="header">Content</div>
+            <div id="contents" class="result">
+                <!-- Content data will be inserted here -->
+                {% if results %}
+                    {% for comment, crypto_info in results.items() %}
+                        {% for username_date, comment_body in comment.items() %}
+                            <div class="row">
+                                <div class="label">Content:</div>
+                                <div class="value">{{ comment_body }}</div>
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                {% else %}
+                    <div class="row">
+                        <div class="value">No results found.</div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="column" id="cryptoColumn">
+            <div class="header">Crypto Address</div>
+            <div id="cryptoAddresses" class="result">
+                <!-- Crypto address data will be inserted here -->
+                {% if results %}
+                    {% for comment, crypto_info in results.items() %}
+                        {% for address, balance in crypto_info.items() %}
+                            <div class="row">
+                                <div class="label">{{ address }}:</div>
+                                <div class="value">{{ balance }}</div>
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                {% else %}
+                    <div class="row">
+                        <div class="value">No results found.</div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    </div>
+    <script type="module" src="{{ url_for('static', filename='stars.js') }}"></script>
+
+    <script>
+        const toggleCrypto = document.getElementById('toggleCrypto');
+        const cryptoColumn = document.getElementById('cryptoColumn');
+
+        toggleCrypto.addEventListener('change', function() {
+            if (this.checked) {
+                cryptoColumn.classList.remove('hidden');
+            } else {
+                cryptoColumn.classList.add('hidden');
+            }
+        });
+    </script>
+    
+</body>
+</html>
